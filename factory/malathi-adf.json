@@ -1,0 +1,15 @@
+{
+	"name": "malathi-adf",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "a975e1ae-9d68-4b6d-a63a-204d7911c50c",
+		"tenantId": "772febc4-c7e8-4c77-8cee-7c86cd4483ac"
+	}
+}
