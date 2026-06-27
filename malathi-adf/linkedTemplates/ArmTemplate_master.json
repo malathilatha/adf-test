@@ -1,0 +1,153 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "malathi-adf"
+		},
+		"AzureBlobStorage2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage2'"
+		},
+		"AzureSqlDatabase2_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSqlDatabase2'"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "servername-malathi.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "free-sql-db-4389649"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "servername-malathi.database.windows.net"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "free-sql-db-4389649"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "server-admin"
+		},
+		"trig_file_a_properties_pipeline1_parameters_p_source_folder_path": {
+			"type": "string",
+			"defaultValue": "source_a"
+		},
+		"trig_file_a_properties_pipeline1_parameters_p_source_file_name": {
+			"type": "string",
+			"defaultValue": "source_a.csv"
+		},
+		"trig_file_b_properties_pipeline1_parameters_p_source_folder_path": {
+			"type": "string",
+			"defaultValue": "source_b"
+		},
+		"trig_file_b_properties_pipeline1_parameters_p_source_file_name": {
+			"type": "string",
+			"defaultValue": "source_b.csv"
+		},
+		"trig_file_c_properties_pipeline1_parameters_p_source_folder_path": {
+			"type": "string",
+			"defaultValue": "source_c"
+		},
+		"trig_file_c_properties_pipeline1_parameters_p_source_file_name": {
+			"type": "string",
+			"defaultValue": "source_c.csv"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "malathi-adf_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureBlobStorage2_connectionString": {
+						"value": "[parameters('AzureBlobStorage2_connectionString')]"
+					},
+					"AzureSqlDatabase2_password": {
+						"value": "[parameters('AzureSqlDatabase2_password')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabase2_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabase2_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabase2_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabase2_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabase2_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabase2_properties_typeProperties_userName')]"
+					},
+					"trig_file_a_properties_pipeline1_parameters_p_source_folder_path": {
+						"value": "[parameters('trig_file_a_properties_pipeline1_parameters_p_source_folder_path')]"
+					},
+					"trig_file_a_properties_pipeline1_parameters_p_source_file_name": {
+						"value": "[parameters('trig_file_a_properties_pipeline1_parameters_p_source_file_name')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "malathi-adf_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"trig_file_b_properties_pipeline1_parameters_p_source_folder_path": {
+						"value": "[parameters('trig_file_b_properties_pipeline1_parameters_p_source_folder_path')]"
+					},
+					"trig_file_b_properties_pipeline1_parameters_p_source_file_name": {
+						"value": "[parameters('trig_file_b_properties_pipeline1_parameters_p_source_file_name')]"
+					},
+					"trig_file_c_properties_pipeline1_parameters_p_source_folder_path": {
+						"value": "[parameters('trig_file_c_properties_pipeline1_parameters_p_source_folder_path')]"
+					},
+					"trig_file_c_properties_pipeline1_parameters_p_source_file_name": {
+						"value": "[parameters('trig_file_c_properties_pipeline1_parameters_p_source_file_name')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'malathi-adf_ArmTemplate_0')]"
+			]
+		}
+	]
+}

@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "malathi-adf"
+		},
+		"AzureBlobStorage2_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase2_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "servername-malathi.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "free-sql-db-4389649"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_server": {
+			"value": "servername-malathi.database.windows.net"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_database": {
+			"value": "free-sql-db-4389649"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_userName": {
+			"value": "server-admin"
+		},
+		"trig_file_a_properties_pipeline1_parameters_p_source_folder_path": {
+			"value": "source_a"
+		},
+		"trig_file_a_properties_pipeline1_parameters_p_source_file_name": {
+			"value": "source_a.csv"
+		},
+		"trig_file_b_properties_pipeline1_parameters_p_source_folder_path": {
+			"value": "source_b"
+		},
+		"trig_file_b_properties_pipeline1_parameters_p_source_file_name": {
+			"value": "source_b.csv"
+		},
+		"trig_file_c_properties_pipeline1_parameters_p_source_folder_path": {
+			"value": "source_c"
+		},
+		"trig_file_c_properties_pipeline1_parameters_p_source_file_name": {
+			"value": "source_c.csv"
+		}
+	}
+}
