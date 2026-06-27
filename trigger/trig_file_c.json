@@ -1,0 +1,28 @@
+{
+	"name": "trig_file_c",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline1",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"p_source_folder_path": "source_c",
+					"p_source_file_name": "source_c.csv"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 45,
+				"startTime": "2026-06-27T13:28:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}
