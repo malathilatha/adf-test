@@ -37,7 +37,7 @@
 		},
 		"trig_file_a_properties_pipeline1_parameters_p_source_folder_path": {
 			"type": "string",
-			"defaultValue": "source_a"
+			"defaultValue": "transactions/source_a"
 		},
 		"trig_file_a_properties_pipeline1_parameters_p_source_file_name": {
 			"type": "string",
@@ -45,7 +45,7 @@
 		},
 		"trig_file_b_properties_pipeline1_parameters_p_source_folder_path": {
 			"type": "string",
-			"defaultValue": "source_b"
+			"defaultValue": "transactions/source_b"
 		},
 		"trig_file_b_properties_pipeline1_parameters_p_source_file_name": {
 			"type": "string",
@@ -53,7 +53,7 @@
 		},
 		"trig_file_c_properties_pipeline1_parameters_p_source_folder_path": {
 			"type": "string",
-			"defaultValue": "source_c"
+			"defaultValue": "transactions/source_c"
 		},
 		"trig_file_c_properties_pipeline1_parameters_p_source_file_name": {
 			"type": "string",

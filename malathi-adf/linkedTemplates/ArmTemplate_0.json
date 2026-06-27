@@ -37,7 +37,7 @@
 		},
 		"trig_file_a_properties_pipeline1_parameters_p_source_folder_path": {
 			"type": "string",
-			"defaultValue": "source_a"
+			"defaultValue": "transactions/source_a"
 		},
 		"trig_file_a_properties_pipeline1_parameters_p_source_file_name": {
 			"type": "string",
