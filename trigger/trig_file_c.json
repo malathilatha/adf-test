@@ -10,7 +10,7 @@
 					"type": "PipelineReference"
 				},
 				"parameters": {
-					"p_source_folder_path": "source_c",
+					"p_source_folder_path": "transactions/source_c",
 					"p_source_file_name": "source_c.csv"
 				}
 			}
