@@ -1,0 +1,19 @@
+{
+	"name": "Json5",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "Output",
+				"container": "container-malathi"
+			}
+		},
+		"schema": {}
+	}
+}

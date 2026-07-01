@@ -1,0 +1,35 @@
+{
+	"name": "Json10",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage2",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"p_end_location": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().p_end_location",
+					"type": "Expression"
+				},
+				"folderPath": "Input",
+				"container": "container-malathi"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"FileName": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}

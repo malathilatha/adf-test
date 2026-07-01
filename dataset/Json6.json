@@ -1,0 +1,26 @@
+{
+	"name": "Json6",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpServer3",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"p_relativeUrl": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "@dataset().p_relativeUrl",
+					"type": "Expression"
+				}
+			}
+		},
+		"schema": {}
+	}
+}

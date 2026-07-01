@@ -1,0 +1,28 @@
+{
+	"name": "Json7",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage2",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"p_fileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().p_fileName",
+					"type": "Expression"
+				},
+				"folderPath": "Output",
+				"container": "container-malathi"
+			}
+		},
+		"schema": {}
+	}
+}
