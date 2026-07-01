@@ -26,6 +26,18 @@
 		"AzureSqlDatabase2_properties_typeProperties_userName": {
 			"value": "server-admin"
 		},
+		"HttpServer1_properties_typeProperties_url": {
+			"value": "https://fakestoreapi.com"
+		},
+		"HttpServer2_properties_typeProperties_url": {
+			"value": "https://fakestoreapi.com"
+		},
+		"HttpServer3_properties_typeProperties_url": {
+			"value": "https://fakestoreapi.com"
+		},
+		"HttpServer4_properties_typeProperties_url": {
+			"value": "https://fakestoreapi.com/"
+		},
 		"trig_file_a_properties_pipeline1_parameters_p_source_folder_path": {
 			"value": "transactions/source_a"
 		},

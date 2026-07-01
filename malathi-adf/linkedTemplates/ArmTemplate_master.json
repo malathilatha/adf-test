@@ -35,6 +35,22 @@
 			"type": "string",
 			"defaultValue": "server-admin"
 		},
+		"HttpServer1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://fakestoreapi.com"
+		},
+		"HttpServer2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://fakestoreapi.com"
+		},
+		"HttpServer3_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://fakestoreapi.com"
+		},
+		"HttpServer4_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://fakestoreapi.com/"
+		},
 		"trig_file_a_properties_pipeline1_parameters_p_source_folder_path": {
 			"type": "string",
 			"defaultValue": "transactions/source_a"
@@ -107,11 +123,17 @@
 					"AzureSqlDatabase2_properties_typeProperties_userName": {
 						"value": "[parameters('AzureSqlDatabase2_properties_typeProperties_userName')]"
 					},
-					"trig_file_a_properties_pipeline1_parameters_p_source_folder_path": {
-						"value": "[parameters('trig_file_a_properties_pipeline1_parameters_p_source_folder_path')]"
+					"HttpServer1_properties_typeProperties_url": {
+						"value": "[parameters('HttpServer1_properties_typeProperties_url')]"
 					},
-					"trig_file_a_properties_pipeline1_parameters_p_source_file_name": {
-						"value": "[parameters('trig_file_a_properties_pipeline1_parameters_p_source_file_name')]"
+					"HttpServer2_properties_typeProperties_url": {
+						"value": "[parameters('HttpServer2_properties_typeProperties_url')]"
+					},
+					"HttpServer3_properties_typeProperties_url": {
+						"value": "[parameters('HttpServer3_properties_typeProperties_url')]"
+					},
+					"HttpServer4_properties_typeProperties_url": {
+						"value": "[parameters('HttpServer4_properties_typeProperties_url')]"
 					}
 				}
 			},
@@ -130,6 +152,12 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"trig_file_a_properties_pipeline1_parameters_p_source_folder_path": {
+						"value": "[parameters('trig_file_a_properties_pipeline1_parameters_p_source_folder_path')]"
+					},
+					"trig_file_a_properties_pipeline1_parameters_p_source_file_name": {
+						"value": "[parameters('trig_file_a_properties_pipeline1_parameters_p_source_file_name')]"
 					},
 					"trig_file_b_properties_pipeline1_parameters_p_source_folder_path": {
 						"value": "[parameters('trig_file_b_properties_pipeline1_parameters_p_source_folder_path')]"
