@@ -1,0 +1,53 @@
+{
+	"name": "AzureSqlTable6",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase3",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "AttractionID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AttractionName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TicketPrice",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "ZoneCategory",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Rating",
+				"type": "decimal",
+				"precision": 3,
+				"scale": 1
+			},
+			{
+				"name": "ReviewCount",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "LoadDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Attractions"
+		}
+	}
+}

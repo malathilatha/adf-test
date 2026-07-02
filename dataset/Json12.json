@@ -1,0 +1,19 @@
+{
+	"name": "Json12",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "processed/merge",
+				"container": "container-malathi"
+			}
+		},
+		"schema": {}
+	}
+}

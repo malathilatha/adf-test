@@ -1,0 +1,80 @@
+{
+	"name": "dataflow3",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable7",
+						"type": "DatasetReference"
+					},
+					"name": "SrcIncoming"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable9",
+						"type": "DatasetReference"
+					},
+					"name": "SrcExisting"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "filter"
+				},
+				{
+					"name": "NewOrChanged"
+				},
+				{
+					"name": "TruelyNew"
+				},
+				{
+					"name": "PriceChanged"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          AttractionID as integer,",
+				"          AttractionName as string,",
+				"          TicketPrice as decimal(10,2),",
+				"          ZoneCategory as string,",
+				"          Rating as decimal(3,1),",
+				"          ReviewCount as integer,",
+				"          LoadDate as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> SrcIncoming",
+				"source(output(",
+				"          SK as integer,",
+				"          AttractionID as integer,",
+				"          AttractionName as string,",
+				"          TicketPrice as decimal(10,2),",
+				"          ZoneCategory as string,",
+				"          EffectiveFrom as timestamp,",
+				"          EffectiveTo as timestamp,",
+				"          IsCurrent as boolean",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> SrcExisting",
+				"SrcExisting filter(IsCurrent == true()",
+				") ~> filter",
+				"SrcIncoming, filter exists(SrcIncoming@AttractionID == SrcExisting@AttractionID",
+				"     && SrcIncoming@TicketPrice == SrcExisting@TicketPrice,",
+				"     negate:true,",
+				"     broadcast: 'auto')~> NewOrChanged",
+				"PriceChanged, filter exists(SrcIncoming@AttractionID == SrcExisting@AttractionID,",
+				"     negate:true,",
+				"     broadcast: 'auto')~> TruelyNew",
+				"NewOrChanged, filter exists(SrcIncoming@AttractionID == SrcExisting@AttractionID,",
+				"     negate:false,",
+				"     broadcast: 'auto')~> PriceChanged"
+			]
+		}
+	}
+}

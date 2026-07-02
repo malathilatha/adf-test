@@ -1,0 +1,131 @@
+{
+	"name": "sql_database_write",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"additionalColumns": [
+							{
+								"name": "LoadDate",
+								"value": {
+									"value": "@utcNow()",
+									"type": "Expression"
+								}
+							}
+						],
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": "Input/raw*",
+							"wildcardFileName": "*.json",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['id']"
+								},
+								"sink": {
+									"name": "AttractionID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['title']"
+								},
+								"sink": {
+									"name": "AttractionName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['price']"
+								},
+								"sink": {
+									"name": "TicketPrice",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['category']"
+								},
+								"sink": {
+									"name": "ZoneCategory",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['LoadDate']"
+								},
+								"sink": {
+									"name": "LoadDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['rating']['rate']"
+								},
+								"sink": {
+									"name": "Rating",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['rating']['count']"
+								},
+								"sink": {
+									"name": "ReviewCount",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Json11",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlTable6",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
