@@ -1,0 +1,75 @@
+{
+	"name": "DelimitedText7",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage2",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"FolderPath": {
+				"type": "string"
+			},
+			"FileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().FileName",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().FolderPath",
+					"type": "Expression"
+				},
+				"container": "container-malathi"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Customer_ID",
+				"type": "String"
+			},
+			{
+				"name": "Acquisition_Date",
+				"type": "String"
+			},
+			{
+				"name": "Channel",
+				"type": "String"
+			},
+			{
+				"name": "CAC",
+				"type": "String"
+			},
+			{
+				"name": "First_Order_Value",
+				"type": "String"
+			},
+			{
+				"name": "Total_Orders",
+				"type": "String"
+			},
+			{
+				"name": "Total_Revenue",
+				"type": "String"
+			},
+			{
+				"name": "Last_Order_Date",
+				"type": "String"
+			},
+			{
+				"name": "Customer_Segment",
+				"type": "String"
+			}
+		]
+	}
+}
