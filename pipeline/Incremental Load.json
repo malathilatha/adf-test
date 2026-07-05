@@ -62,7 +62,10 @@
 							"typeProperties": {
 								"source": {
 									"type": "AzureSqlSource",
-									"sqlReaderQuery": "@concat('SELECT COALESCE(MAX(', item().WatermarkColumn, '), ''', item().WatermarkValue, ''') AS NewWatermarkValue FROM ', item().SourceSchema, '.', item().SourceTableName)",
+									"sqlReaderQuery": {
+										"value": "@concat('SELECT COALESCE(MAX(', item().WatermarkColumn, '), ''', item().WatermarkValue, ''') AS NewWatermarkValue FROM ', item().SourceSchema, '.', item().SourceTableName)",
+										"type": "Expression"
+									},
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
@@ -174,6 +177,34 @@
 									}
 								],
 								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Web1",
+							"type": "WebActivity",
+							"dependsOn": [
+								{
+									"activity": "Copy data1",
+									"dependencyConditions": [
+										"Failed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "POST",
+								"url": "https://prod-22.northcentralus.logic.azure.com:443/workflows/7a046a3220a942b287c07a8e42f6d225/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=B9f7iBpMeFJNBBeR6EP8Jyi-lZph4mSMkfKgGwZoolw",
+								"body": {
+									"value": "{\n    \"PipelineName\": \"@pipeline().Pipeline\",\n    \"RunId\": \"@pipeline().RunId\",\n    \"TableName\": \"@item().SourceTableName\",\n    \"ErrorMessage\": \"@activity('Copy data1').error.message\",\n    \"ErrorType\": \"@activity('Copy data1').error.failureType\",\n    \"Timestamp\": \"@formatDateTime(utcNow(), 'yyyy-MM-dd HH:mm:ss')\"\n}",
+									"type": "Expression"
+								}
 							}
 						}
 					]
