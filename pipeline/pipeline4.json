@@ -20,7 +20,8 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"itemName"
+						"itemName",
+						"exists"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
@@ -65,7 +66,7 @@
 							"typeProperties": {
 								"notebookPath": "https://adb-7405604907512985.5.azuredatabricks.net/editor/notebooks/2274204179319420?o=7405604907512985",
 								"baseParameters": {
-									"source_file_path": "abfss://container-malathi@stgaccntmalathi1511.dfs.core.windows.net/sales_data.csv",
+									"source_file_path": "abfss://container-malathi@stgaccntmalathi1511.dfs.core.windows.net/Input/sales_data.csv",
 									"run_date": "@formatDateTime(utcNow(),'yyyy-MM-dd')"
 								}
 							},
